@@ -1,0 +1,12 @@
+apiVersion: v2
+name: osrm-matching
+description: Helm chart for deploying OSRM matching
+type: application
+version: 0.1.12
+dependencies:
+  - name: mobibasechart
+    version: 2.1.4
+    repository: "oci://mobidphelmcharts.cr.de-fra.ionos.com/mobibasechart"
+appVersion: 0.1.13
+annotations:
+  "org.opencontainers.image.source": "https://github.com/mobidrom/verkehr.nrw-osrm-matching"

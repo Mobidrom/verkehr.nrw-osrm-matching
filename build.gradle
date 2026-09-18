@@ -1,0 +1,98 @@
+plugins {
+    id 'java'
+    id 'io.quarkus'
+    id 'checkstyle'
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+group = 'nrw.mobidrom.verkehr'
+version = "${appVersion}"
+
+configurations.all {
+    exclude group: "log4j", module: "log4j"
+}
+
+configurations {
+    compileClasspath {
+        resolutionStrategy.activateDependencyLocking()
+    }
+}
+
+dependencies {
+    implementation platform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
+    implementation 'com.opencsv:opencsv:5.12.0'
+    implementation 'com.google.protobuf:protobuf-java:4.36.1'
+    implementation 'commons-io:commons-io:2.22.0'
+    implementation 'io.quarkus:quarkus-arc'
+    implementation 'io.quarkus:quarkus-flyway'
+    implementation 'io.quarkus:quarkus-hibernate-orm-panache'
+    implementation 'io.quarkus:quarkus-jdbc-postgresql'
+    implementation 'io.quarkus:quarkus-rest'
+    implementation 'io.quarkus:quarkus-rest-jackson'
+    implementation 'io.quarkus:quarkus-container-image-jib'
+    implementation 'io.quarkus:quarkus-smallrye-health'
+    implementation 'io.quarkus:quarkus-opentelemetry'
+    implementation 'net.postgis:postgis-jdbc:2025.1.1'
+    implementation 'net.sf.geographiclib:GeographicLib-Java:2.1'
+    implementation 'org.apache.httpcomponents.client5:httpclient5:5.6.4'
+    implementation 'org.hibernate.orm:hibernate-spatial:7.2.5.Final'
+    implementation 'org.jboss.logmanager:log4j-jboss-logmanager'
+    implementation 'org.json:json:20251224'
+    implementation 'org.openlr:map:1.4.3'
+    implementation 'org.openlr:binary:1.4.3'
+    implementation 'org.openlr:openlr:1.4.3'
+    implementation 'org.openlr:decoder:1.4.3'
+    implementation 'tools.jackson.core:jackson-databind:3.2.2'
+    compileOnly "org.projectlombok:lombok:1.18.48"
+    annotationProcessor "org.projectlombok:lombok:1.18.48"
+
+    testCompileOnly "org.projectlombok:lombok:1.18.48"
+    testAnnotationProcessor "org.projectlombok:lombok:1.18.48"
+
+    testImplementation 'io.quarkus:quarkus-junit'
+    testImplementation 'io.rest-assured:rest-assured'
+    testImplementation 'org.wiremock:wiremock:3.13.2'
+
+    annotationProcessor 'org.hibernate.orm:hibernate-processor:7.2.5.Final'
+}
+
+def generatedSourcesDir = layout.buildDirectory.dir("generated/sources/quarkus")
+sourceSets.configureEach { sourceSet ->
+    tasks.named(sourceSet.compileJavaTaskName).configure {
+        options.generatedSourceOutputDirectory.set(generatedSourcesDir)
+    }
+}
+tasks.named('compileJava') {
+    dependsOn 'compileQuarkusTestGeneratedSourcesJava'
+}
+
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
+}
+
+test {
+    systemProperty "java.util.logging.manager", "org.jboss.logmanager.LogManager"
+}
+compileJava {
+    options.encoding = 'UTF-8'
+    options.compilerArgs << '-parameters'
+}
+
+compileTestJava {
+    options.encoding = 'UTF-8'
+}
+
+checkstyle {
+    toolVersion = "13.9.0"
+    configFile = new File("checkstyle.xml")
+    ignoreFailures = false
+    maxWarnings = 0
+    showViolations = true
+}

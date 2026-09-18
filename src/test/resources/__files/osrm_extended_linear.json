@@ -1,0 +1,55 @@
+{
+  "code": "Ok",
+  "matchings": [
+    {
+      "confidence": 0,
+      "geometry": "sjtwHg~ih@q@_EOy@CUAMEi@?IaAJs@Ha@JwC|APrAHp@BPZrAThAHZn@_@DA",
+      "legs": [
+        {
+          "annotation": {
+            "metadata": {
+              "datasource_names": [
+                "lua profile"
+              ]
+            },
+            "nodes": [1609892116, 314624973, 1577236335, 4438376566, 5973196499, 1577236417, 1577236426, 316438947, 1609880063, 1609880083, 253810919, 661217363, 4115933174, 661217114, 5315383212, 1587163508, 272399957, 315062232, 2997622349],
+            "datasources": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            "speed": [6.7, 6.7, 6.7, 6.9, 6.7, 7, 6.6, 6.7, 6.6, 6.7, 6.7, 6.6, 6.4, 6.6, 6.7, 6.7, 6.6, 7.4],
+            "weight": [10.7, 3.3, 1.2, 0.8, 2.2, 0.5, 5.6, 4.3, 3, 13.6, 4.6, 2.8, 1, 5, 4.3, 1.6, 4.5, 0.4],
+            "duration": [10.7, 3.3, 1.2, 0.8, 2.2, 0.5, 5.6, 4.3, 3, 13.6, 4.6, 2.8, 1, 5, 4.3, 1.6, 4.5, 0.4],
+            "distance": [71.882903, 22.068283, 8.077601, 5.526846, 14.800141, 3.489731, 37.229641, 28.845111, 19.691876, 90.674496, 30.655082, 18.55874, 6.447949, 33.192154, 28.920478, 10.749618, 29.752992, 2.946679]
+          },
+          "steps": [],
+          "distance": 463.5,
+          "duration": 80,
+          "summary": "",
+          "weight": 80
+        }
+      ],
+      "distance": 463.5,
+      "duration": 80,
+      "weight_name": "routability",
+      "weight": 80
+    }
+  ],
+  "tracepoints": [
+    {
+      "alternatives_count": 0,
+      "waypoint_index": 0,
+      "matchings_index": 0,
+      "location": [6.773644, 51.227461],
+      "name": "Mühlenstraße",
+      "distance": 33.806343,
+      "hint": "R_alAXL2pYFrAAAABQAAAAAAAAAAAAAAOiKQQvZYPEAAAAAAAAAAAGsAAAAFAAAAAAAAAAAAAAB7JwAAjFtnAEWrDQPQWmcAXawNAwAAfw8aXUob"
+    },
+    {
+      "alternatives_count": 3,
+      "waypoint_index": 1,
+      "matchings_index": 0,
+      "location": [6.773174, 51.228641],
+      "name": "Liefergasse",
+      "distance": 59.798511,
+      "hint": "OPalgf___38EAAAABAAAAC0AAAAAAAAAkLA8QAAAAACPLe5BAAAAAAQAAAAEAAAALQAAAAAAAAB7JwAAtllnAOGvDQPwXGcAVK8NAwEADwoaXUob"
+    }
+  ]
+}

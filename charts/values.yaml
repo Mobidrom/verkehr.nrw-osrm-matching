@@ -1,0 +1,125 @@
+###########################
+# OSRM MATCHING HELMCHART #
+###########################
+#
+# This file contains the custom values for the OSRM matching helm chart.
+# To deploy changes, developers should adjust the values as needed.
+mobibasechart:
+  global:
+    appName: osrm-matching
+    imagePullSecrets:
+      - name: mobidrom-registry
+    namespaceOverride: ""
+  #####################
+  # WORKLOAD VALUES #
+  #####################
+  workload:
+    kind: Deployment
+    # -- Number of replicas to deploy
+    replicaCount: 1
+    image:
+      # -- The registry to pull the image from.
+      registry: "ghcr.io"
+      # -- The image repository and name to pull from, i.e. exampleRepo/imageName, required
+      repository: "mobidrom/verkehr.nrw-osrm-matching/osrm-matching"
+      # -- Image Tag
+      tag: "0.1.13"
+      # -- The pullPolicy for the image
+      pullPolicy: Always
+    configMapEnvs:
+      variables:
+        DB_PORT: "5432"
+        DB_NAME: "releaseruntime"
+        DB_USERNAME: "release_runtime_bobbymat"
+        OSRM_ROUTER_HOST: "http://osrm-router-distance.run-verkehr-nrw.svc.cluster.local" # deprecated, will be removed in a future release
+        OSRM_OPENLR_ROUTER_HOST: "http://osrm-router-openlr.run-verkehr-nrw.svc.cluster.local"
+        OSRM_DISTANCE_ROUTER_HOST: "http://osrm-router-distance.run-verkehr-nrw.svc.cluster.local"
+        JAVA_TOOL_OPTIONS: "-XX:MaxRAMPercentage=80.0 -XX:+UseParallelGC -XX:MinHeapFreeRatio=10 -XX:MaxHeapFreeRatio=20 -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -XX:+ExitOnOutOfMemoryError"
+    externalSecrets:
+      - name: postgresql-credentials
+        data:
+          - remoteSecretKey: postgres/runtime-db-password
+            secretKey: DB_PASSWORD
+    affinity:
+      nodeAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 1
+            preference:
+              matchExpressions:
+                - key: size
+                  operator: NotIn
+                  values:
+                    - "large"
+    tolerations:
+      - key: "runtime-domain"
+        operator: "Exists"
+        effect: "NoExecute"
+    # -- Resource limits and requests
+    resources:
+      limits:
+        cpu: 1
+        memory: 1Gi
+      requests:
+        cpu: 0.5
+        memory: 1Gi
+    # -- Additional volumes on the output Deployment definition.
+    volumes:
+      - name: jboss-volume
+        emptyDir:
+          sizeLimit: 100Mi
+    # -- Additional volumeMounts on the output Deployment definition.
+    volumeMounts:
+      - mountPath: /opt/jboss/container/java/jvm/
+        name: jboss-volume
+    # -- Ports to expose on the container
+    containerPorts:
+      - name: http
+        port: 8085
+        protocol: TCP
+    # -- securityContext Settings
+    securityContext:
+      # capabilities:
+      #   drop:
+      #   - ALL
+      # readOnlyRootFilesystem: true
+      runAsNonRoot: true
+      runAsUser: 1000
+      runAsGroup: 1001
+      allowPrivilegeEscalation: false
+    # -- Liveness and Readiness probes.
+    livenessProbe:
+      enabled: true
+      config:
+        httpGet:
+          path: /q/health/live
+          port: http
+        initialDelaySeconds: 20
+        periodSeconds: 20
+    readinessProbe:
+      enabled: true
+      config:
+        httpGet:
+          path: /q/health/ready
+          port: http
+        initialDelaySeconds: 10
+        periodSeconds: 10
+  networkpolicy:
+    externalTo: true
+    namespacesFrom:
+      - "gf-argo-eventflows"
+  #########################
+  # SERVICE (PORT) VALUES #
+  #########################
+
+  # -- Port Settings of the service exposing the deployment.
+  service:
+    # -- The list of ports to expose
+    ports:
+      # -- Name of the port. Changing the name requires you to also disable the liveness and readiness probes or change the port there.
+      - name: http
+        # -- Port number to expose
+        port: 80
+        # -- Target port of the service, needs to be one of the exposed container ports
+        targetPort: 8085
+        # -- Protocol of the port
+        protocol: TCP

@@ -1,0 +1,9 @@
+{{- if .Values.mobibasechart.global.namespaceOverride }}
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: {{ .Values.mobibasechart.global.namespaceOverride }}
+  labels:
+    mobidp-ops-pullsecret: "true"
+    runtime: "true"
+{{- end -}}

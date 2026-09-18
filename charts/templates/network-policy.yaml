@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: workflow-to-osrm-matching
+  namespace: gf-argo-eventflows
+spec:
+  egress:
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: run-verkehr-nrw
+      podSelector:
+        matchLabels:
+          app.kubernetes.io/name: osrm-matching
+  podSelector:
+    matchLabels:
+      workflow-traffic-osrm-matching: "true"
+  policyTypes:
+  - Egress

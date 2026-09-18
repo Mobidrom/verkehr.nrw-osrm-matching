@@ -1,0 +1,70 @@
+{
+  "waypoints": [
+    {
+      "nodes": [
+        2019563175,
+        261563593
+      ],
+      "location": [
+        6.505121,
+        51.416315
+      ],
+      "name": "Weidenstraße",
+      "distance": 0.656053,
+      "hint": "CzjhgWo44YEKAAAAZgAAAAAAAAAAAAAAZSvyQLtQjUIAAAAAAAAAAAoAAABmAAAAAAAAAAAAAAB7JwAAoUJjAPuMEAOmQmMAAI0QAwAALxMaXUob"
+    },
+    {
+      "nodes": [
+        995620731,
+        261563593
+      ],
+      "location": [
+        6.505209,
+        51.416275
+      ],
+      "name": "Weidenstraße",
+      "distance": 7.641703,
+      "hint": "CjjhgSo44YEAAAAAJgAAAAAAAACBAAAAAAAAAI5NKEEAAAAAQ94OQgAAAAAmAAAAAAAAAIEAAAB7JwAA-UJjANOMEAOmQmMAAI0QAwAALw0aXUob"
+    },
+    {
+      "nodes": [
+        822550132,
+        261564551
+      ],
+      "location": [
+        6.505247,
+        51.416312
+      ],
+      "name": "Teilmansfeld",
+      "distance": 8.463302,
+      "hint": "DDjhgcI44YEAAAAAAQAAAAAAAAAAAAAAAAAAAGc5NUAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAB7JwAAH0NjAPiMEAOmQmMAAI0QAwAALwIaXUob"
+    },
+    {
+      "nodes": [
+        822550133,
+        822550132
+      ],
+      "location": [
+        6.50527,
+        51.416333
+      ],
+      "name": "",
+      "distance": 10.120063,
+      "hint": "xDjhgcU44YEAAAAAnQAAAAAAAAAxAQAAAAAAANX_AkIAAAAAwaB-QgAAAABOAAAAAAAAAJgAAAB7JwAANkNjAA2NEAOmQmMAAI0QAwAA_wcaXUob"
+    },
+    {
+      "nodes": [
+        822550132,
+        7048228527
+      ],
+      "location": [
+        6.50527,
+        51.416333
+      ],
+      "name": "Teilmansfeld",
+      "distance": 10.120063,
+      "hint": "ljjhgcM44YEdAAAAAAAAAAAAAAAAAAAAvhuBQgAAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAAAAAAB7JwAANkNjAA2NEAOmQmMAAI0QAwAAfw0aXUob"
+    }
+  ],
+  "code": "Ok"
+}

@@ -1,0 +1,44 @@
+name: Verkehr.NRW OSRM Matching CI
+
+on:
+  push:
+    branches:
+      - "main"
+  pull_request:
+    types: [opened, reopened, synchronize]
+permissions:
+  contents: write
+  packages: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  application-ci-cd:
+    name: Build, Package, Write-Back and Push Updates
+    uses: mobidrom/github-actions/.github/workflows/ci.yaml@main
+    secrets: inherit
+    with:
+      source-repository: "verkehr.nrw-osrm-matching"
+      tech-stack: "java"
+      tech-stack-version: "25"
+      image-app-name: "osrm-matching"
+      image-app-dir: "."
+      image-build-cache: "gradle"
+      image-files: |
+        src/**
+        build.gradle
+        settings.gradle
+        gradlew
+        gradle.properties
+        gradle/**
+      image-parent-directories: "."
+      chart-app-name: "osrm-matching"
+      chart-files: charts/**
+      chart-dir-max-depth: 1
+      write-back-image-fields: |
+        {  "name": ".mobibasechart.workload.image.tag", "path": "charts/PATH/values.yaml" },
+        {  "name": ".appVersion", "path": "charts/PATH/Chart.yaml" },
+        {  "name": ".appVersion", "path": "gradle.properties" }
+      write-back-chart-fields: |
+        { "name": ".version", "path": "PATH/Chart.yaml" }
+      config-type: "runtime-helm"
