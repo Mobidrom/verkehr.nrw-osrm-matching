@@ -54,6 +54,7 @@ dependencies {
     testAnnotationProcessor "org.projectlombok:lombok:1.18.48"
 
     testImplementation 'io.quarkus:quarkus-junit'
+    testImplementation 'io.quarkus:quarkus-jacoco'
     testImplementation 'io.rest-assured:rest-assured'
     testImplementation 'org.wiremock:wiremock:3.13.2'
 
