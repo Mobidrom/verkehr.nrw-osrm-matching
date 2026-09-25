@@ -17,7 +17,6 @@ import java.util.List;
 @ToString
 public class OpenLRObject {
 
-    // private ByteString openlr;
     private String openlr;
 
     private LineString geometry;
@@ -40,13 +39,6 @@ public class OpenLRObject {
     private int frc;
 
     private String queryString;
-
-    // //Flag to indicate that geometry is not calculated because of filter
-    // settings
-    // private boolean passedFilter = true;
-    //
-    // //Flag to indicate that the matching algorithm failed
-    // private boolean matchingSucceded = true;
 
     // Extended parameters for
     // Tracepoints from osrm response

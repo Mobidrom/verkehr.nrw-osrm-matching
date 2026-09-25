@@ -9,4 +9,7 @@ echo "Building & Pushing ${IMAGE_NAME}..."
   -Dquarkus.container-image.tag="${IMAGE_TAG}" \
   -Dquarkus.container-image.labels."org.opencontainers.image.source"="https://github.com/mobidrom/verkehr.nrw-osrm-matching"
 
+# extract code coverage from jacoco.csv
+./jacoco-summary.sh build/jacoco-report/jacoco.csv
+
 echo "Building ${IMAGE_NAME} completed!"
