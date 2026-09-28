@@ -39,7 +39,7 @@ dependencies {
     implementation 'net.postgis:postgis-jdbc:2025.1.1'
     implementation 'net.sf.geographiclib:GeographicLib-Java:2.1'
     implementation 'org.apache.httpcomponents.client5:httpclient5:5.6.4'
-    implementation 'org.hibernate.orm:hibernate-spatial:7.2.5.Final'
+    implementation 'org.hibernate.orm:hibernate-spatial:7.4.10.Final'
     implementation 'org.jboss.logmanager:log4j-jboss-logmanager'
     implementation 'org.json:json:20260814'
     implementation 'org.openlr:map:1.4.3'
@@ -58,7 +58,7 @@ dependencies {
     testImplementation 'io.rest-assured:rest-assured'
     testImplementation 'org.wiremock:wiremock:3.13.2'
 
-    annotationProcessor 'org.hibernate.orm:hibernate-processor:7.2.5.Final'
+    annotationProcessor 'org.hibernate.orm:hibernate-processor:7.4.10.Final'
 }
 
 def generatedSourcesDir = layout.buildDirectory.dir("generated/sources/quarkus")
