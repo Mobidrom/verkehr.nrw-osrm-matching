@@ -569,7 +569,7 @@ Apache 2.0 under its compatibility clause).
 
 For more information, see the [official EUPL page](https://interoperable-europe.ec.europa.eu/collection/eupl).
 
-Notice that the EUPL is also available in several [official languages](https://interoperable-europe.ec.europa.eu/collection/eupl/eupl-text-eupl-12).
+A German translation of the license is provided in [LICENSE_DE](LICENSE_DE). Notice that the EUPL is also available in several other [official languages](https://interoperable-europe.ec.europa.eu/collection/eupl/eupl-text-eupl-12); all official language versions are equally valid (Art. 13 EUPL).
 
 ---
 
