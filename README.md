@@ -567,8 +567,9 @@ The EUPL is an open-source license created and approved by the European Commissi
 published by public administrations and is compatible with several widely used open-source licenses (including GPL, LGPL, MPL, and
 Apache 2.0 under its compatibility clause).
 
-For more information, see the official EUPL page:
-https://joinup.ec.europa.eu/collection/eupl
+For more information, see the [official EUPL page](https://interoperable-europe.ec.europa.eu/collection/eupl).
+
+Notice that the EUPL is also available in several [official languages](https://interoperable-europe.ec.europa.eu/collection/eupl/eupl-text-eupl-12).
 
 ---
 
