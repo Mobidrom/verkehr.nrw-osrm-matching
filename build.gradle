@@ -46,7 +46,7 @@ dependencies {
     implementation 'org.openlr:binary:1.4.3'
     implementation 'org.openlr:openlr:1.4.3'
     implementation 'org.openlr:decoder:1.4.3'
-    implementation 'tools.jackson.core:jackson-databind:3.2.3'
+    implementation 'tools.jackson.core:jackson-databind:3.2.4'
     compileOnly "org.projectlombok:lombok:1.18.48"
     annotationProcessor "org.projectlombok:lombok:1.18.48"
 
