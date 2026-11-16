@@ -58,7 +58,7 @@ dependencies {
     testImplementation 'io.rest-assured:rest-assured'
     testImplementation 'org.wiremock:wiremock:3.13.2'
 
-    annotationProcessor 'org.hibernate.orm:hibernate-processor:7.2.5.Final'
+    annotationProcessor 'org.hibernate.orm:hibernate-processor:7.4.15.Final'
 }
 
 def generatedSourcesDir = layout.buildDirectory.dir("generated/sources/quarkus")
