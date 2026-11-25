@@ -13,9 +13,6 @@ import openlr.LocationReferencePoint;
 import openlr.Offsets;
 import openlr.rawLocRef.RawLocationReference;
 import org.apache.commons.codec.binary.Base64;
-import org.apache.log4j.BasicConfigurator;
-import org.apache.log4j.ConsoleAppender;
-import org.apache.log4j.PatternLayout;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -36,8 +33,6 @@ public class OpenLRTest {
     private static IOpenLRDecoder decoder;
 
     public static void main(String[] args) {
-        BasicConfigurator.configure(new ConsoleAppender(
-                new PatternLayout("%d{yyyy/MM/dd - HH:mm:ss.SSS} %p %c: - %m%n")));
         decoder = new OpenLRSimpleDecoder();
         //        decoder = new OpenLROsrmMatchingDecoder(matchingService);
         testDecode();
